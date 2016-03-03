@@ -19,6 +19,11 @@
 		3F24A3E31C837E1E00CB70CF /* InterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F24A3E21C837E1E00CB70CF /* InterfaceController.swift */; };
 		3F24A3E51C837E1E00CB70CF /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F24A3E41C837E1E00CB70CF /* ExtensionDelegate.swift */; };
 		3F24A3E71C837E1E00CB70CF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3F24A3E61C837E1E00CB70CF /* Assets.xcassets */; };
+		3F24A3F71C83840D00CB70CF /* MenuInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F24A3F61C83840C00CB70CF /* MenuInterfaceController.swift */; };
+		3F24A3F91C8384A700CB70CF /* TableRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F24A3F81C8384A700CB70CF /* TableRow.swift */; };
+		3FA6AFC91C839E3800BBA78E /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FA6AFC81C839E3800BBA78E /* HealthKit.framework */; };
+		3FA6AFCB1C839EBE00BBA78E /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FA6AFCA1C839EBE00BBA78E /* HealthKit.framework */; };
+		3FB595A91C8884B500D4EA41 /* GlanceInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FB595A81C8884B400D4EA41 /* GlanceInterfaceController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -80,6 +85,13 @@
 		3F24A3E41C837E1E00CB70CF /* ExtensionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDelegate.swift; sourceTree = "<group>"; };
 		3F24A3E61C837E1E00CB70CF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3F24A3E81C837E1E00CB70CF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3F24A3F61C83840C00CB70CF /* MenuInterfaceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuInterfaceController.swift; sourceTree = "<group>"; };
+		3F24A3F81C8384A700CB70CF /* TableRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableRow.swift; sourceTree = "<group>"; };
+		3FA6AFC71C839E3800BBA78E /* FourZone4Blueprint.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = FourZone4Blueprint.entitlements; sourceTree = "<group>"; };
+		3FA6AFC81C839E3800BBA78E /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
+		3FA6AFCA1C839EBE00BBA78E /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = Platforms/WatchOS.platform/Developer/SDKs/WatchOS2.1.sdk/System/Library/Frameworks/HealthKit.framework; sourceTree = DEVELOPER_DIR; };
+		3FA6AFCC1C839EBE00BBA78E /* FourZone4Blueprint WatchKit Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "FourZone4Blueprint WatchKit Extension.entitlements"; sourceTree = "<group>"; };
+		3FB595A81C8884B400D4EA41 /* GlanceInterfaceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GlanceInterfaceController.swift; path = "../FourZone4Blueprint WatchKit App/GlanceInterfaceController.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +99,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3FA6AFC91C839E3800BBA78E /* HealthKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -94,6 +107,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3FA6AFCB1C839EBE00BBA78E /* HealthKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -103,6 +117,8 @@
 		3F24A3B31C837E1D00CB70CF = {
 			isa = PBXGroup;
 			children = (
+				3FA6AFCA1C839EBE00BBA78E /* HealthKit.framework */,
+				3FA6AFC81C839E3800BBA78E /* HealthKit.framework */,
 				3F24A3BE1C837E1D00CB70CF /* FourZone4Blueprint */,
 				3F24A3D21C837E1E00CB70CF /* FourZone4Blueprint WatchKit App */,
 				3F24A3E11C837E1E00CB70CF /* FourZone4Blueprint WatchKit Extension */,
@@ -123,6 +139,7 @@
 		3F24A3BE1C837E1D00CB70CF /* FourZone4Blueprint */ = {
 			isa = PBXGroup;
 			children = (
+				3FA6AFC71C839E3800BBA78E /* FourZone4Blueprint.entitlements */,
 				3F24A3BF1C837E1D00CB70CF /* AppDelegate.swift */,
 				3F24A3C11C837E1D00CB70CF /* ViewController.swift */,
 				3F24A3C31C837E1D00CB70CF /* Main.storyboard */,
@@ -146,7 +163,11 @@
 		3F24A3E11C837E1E00CB70CF /* FourZone4Blueprint WatchKit Extension */ = {
 			isa = PBXGroup;
 			children = (
+				3F24A3F61C83840C00CB70CF /* MenuInterfaceController.swift */,
+				3FB595A81C8884B400D4EA41 /* GlanceInterfaceController.swift */,
 				3F24A3E21C837E1E00CB70CF /* InterfaceController.swift */,
+				3F24A3F81C8384A700CB70CF /* TableRow.swift */,
+				3FA6AFCC1C839EBE00BBA78E /* FourZone4Blueprint WatchKit Extension.entitlements */,
 				3F24A3E41C837E1E00CB70CF /* ExtensionDelegate.swift */,
 				3F24A3E61C837E1E00CB70CF /* Assets.xcassets */,
 				3F24A3E81C837E1E00CB70CF /* Info.plist */,
@@ -222,12 +243,24 @@
 				TargetAttributes = {
 					3F24A3BB1C837E1D00CB70CF = {
 						CreatedOnToolsVersion = 7.2.1;
+						DevelopmentTeam = DJE44ZPPJW;
+						SystemCapabilities = {
+							com.apple.HealthKit = {
+								enabled = 1;
+							};
+						};
 					};
 					3F24A3CD1C837E1E00CB70CF = {
 						CreatedOnToolsVersion = 7.2.1;
 					};
 					3F24A3DC1C837E1E00CB70CF = {
 						CreatedOnToolsVersion = 7.2.1;
+						DevelopmentTeam = DJE44ZPPJW;
+						SystemCapabilities = {
+							com.apple.HealthKit = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -296,6 +329,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				3F24A3E51C837E1E00CB70CF /* ExtensionDelegate.swift in Sources */,
+				3F24A3F91C8384A700CB70CF /* TableRow.swift in Sources */,
+				3FB595A91C8884B500D4EA41 /* GlanceInterfaceController.swift in Sources */,
+				3F24A3F71C83840D00CB70CF /* MenuInterfaceController.swift in Sources */,
 				3F24A3E31C837E1E00CB70CF /* InterfaceController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -427,10 +463,14 @@
 		3F24A3EC1C837E1E00CB70CF /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = "FourZone4Blueprint WatchKit Extension/FourZone4Blueprint WatchKit Extension.entitlements";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "FourZone4Blueprint WatchKit Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.thm.FourZone4Blueprint.watchkitapp.watchkitextension;
 				PRODUCT_NAME = "${TARGET_NAME}";
+				PROVISIONING_PROFILE = "";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = 4;
@@ -441,10 +481,14 @@
 		3F24A3ED1C837E1E00CB70CF /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = "FourZone4Blueprint WatchKit Extension/FourZone4Blueprint WatchKit Extension.entitlements";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "FourZone4Blueprint WatchKit Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.thm.FourZone4Blueprint.watchkitapp.watchkitextension;
 				PRODUCT_NAME = "${TARGET_NAME}";
+				PROVISIONING_PROFILE = "";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = 4;
@@ -456,13 +500,16 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				IBSC_MODULE = FourZone4Blueprint_WatchKit_Extension;
 				INFOPLIST_FILE = "FourZone4Blueprint WatchKit App/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.thm.FourZone4Blueprint.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = 4;
 				WATCHOS_DEPLOYMENT_TARGET = 2.1;
 			};
@@ -472,9 +519,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				IBSC_MODULE = FourZone4Blueprint_WatchKit_Extension;
 				INFOPLIST_FILE = "FourZone4Blueprint WatchKit App/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.thm.FourZone4Blueprint.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
@@ -488,10 +537,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = FourZone4Blueprint/FourZone4Blueprint.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = FourZone4Blueprint/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.thm.FourZone4Blueprint;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -499,10 +552,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = FourZone4Blueprint/FourZone4Blueprint.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = FourZone4Blueprint/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.thm.FourZone4Blueprint;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
@@ -525,6 +582,7 @@
 				3F24A3ED1C837E1E00CB70CF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		3F24A3EF1C837E1E00CB70CF /* Build configuration list for PBXNativeTarget "FourZone4Blueprint WatchKit App" */ = {
 			isa = XCConfigurationList;
@@ -533,6 +591,7 @@
 				3F24A3F11C837E1E00CB70CF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		3F24A3F31C837E1E00CB70CF /* Build configuration list for PBXNativeTarget "FourZone4Blueprint" */ = {
 			isa = XCConfigurationList;
@@ -541,6 +600,7 @@
 				3F24A3F51C837E1E00CB70CF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -1,15 +1,100 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="6221" systemVersion="13E28" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="AgC-eL-Hgc">
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="9532" systemVersion="15C50" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="xGv-eY-dJD">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6213"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="3733"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="9515"/>
     </dependencies>
     <scenes>
-        <!--Interface Controller-->
+        <!--hrMeasure-->
         <scene sceneID="aou-V4-d1y">
             <objects>
-                <controller id="AgC-eL-Hgc" customClass="InterfaceController" customModuleProvider="target"/>
+                <controller identifier="hrMeasure" id="AgC-eL-Hgc" customClass="InterfaceController" customModule="FourZone4Blueprint_WatchKit_App" customModuleProvider="target">
+                    <items>
+                        <group width="1" alignment="left" id="AUf-nE-Q6e">
+                            <items>
+                                <imageView width="78" height="78" alignment="center" image="Light" id="sTq-4S-zcg"/>
+                            </items>
+                        </group>
+                        <group width="1" alignment="left" spacing="0.0" id="2RH-cV-EMi">
+                            <items>
+                                <label alignment="center" text="40%" textAlignment="center" id="XFz-pL-41a">
+                                    <fontDescription key="font" type="boldSystem" pointSize="16"/>
+                                </label>
+                            </items>
+                        </group>
+                        <label alignment="center" text="50 BMP" id="msi-1I-abi">
+                            <fontDescription key="font" type="boldSystem" pointSize="16"/>
+                        </label>
+                        <label alignment="center" text="Light Workout" textAlignment="left" id="ldj-JO-B3S"/>
+                    </items>
+                    <connections>
+                        <outlet property="bpmVIew" destination="msi-1I-abi" id="z0o-Xz-PcX"/>
+                        <outlet property="percentageView" destination="XFz-pL-41a" id="r7E-0M-CM3"/>
+                        <outlet property="ringView" destination="sTq-4S-zcg" id="cpO-Fl-oVG"/>
+                        <outlet property="statusView" destination="ldj-JO-B3S" id="CT2-xb-Lnc"/>
+                    </connections>
+                </controller>
             </objects>
+            <point key="canvasLocation" x="137" y="328"/>
+        </scene>
+        <!--Glance Interface Controller-->
+        <scene sceneID="Zx0-d2-bIW">
+            <objects>
+                <glanceController topTemplateType="body1Medium" bottomTemplateType="extraLargeBody1Group" id="l9R-W5-fz9" customClass="GlanceInterfaceController" customModule="FourZone4Blueprint_WatchKit_Extension">
+                    <items>
+                        <label alignment="left" text="Foruzone" id="K66-UE-f4P"/>
+                        <label alignment="left" text="HR" id="Rjk-MI-H7h"/>
+                        <label alignment="left" text="40%" id="0Gn-iK-I6I"/>
+                        <label alignment="left" text="50 bpm" id="Yv7-es-1Vu"/>
+                        <group alignment="left" id="uxB-HP-Lli">
+                            <items>
+                                <imageView width="1" height="1" alignment="left" hidden="YES" id="ANL-uF-2fI"/>
+                            </items>
+                        </group>
+                    </items>
+                    <connections>
+                        <outlet property="bpmVIew" destination="Yv7-es-1Vu" id="JIa-82-0j2"/>
+                        <outlet property="percentageView" destination="0Gn-iK-I6I" id="nJg-Rm-MmH"/>
+                    </connections>
+                </glanceController>
+            </objects>
+            <point key="canvasLocation" x="393" y="328"/>
+        </scene>
+        <!--Menu Interface Controller-->
+        <scene sceneID="6Zu-k2-kqv">
+            <objects>
+                <controller id="xGv-eY-dJD" customClass="MenuInterfaceController" customModule="FourZone4Blueprint_WatchKit_Extension">
+                    <items>
+                        <table alignment="left" id="9xj-uO-TsW">
+                            <items>
+                                <tableRow identifier="Row" id="pLS-jM-iBp" customClass="TableRow" customModule="FourZone4Blueprint_WatchKit_Extension">
+                                    <group key="rootItem" width="1" alignment="left" id="rTZ-xg-cFz">
+                                        <items>
+                                            <group width="26" height="1" alignment="left" id="5f5-KA-Geu">
+                                                <items>
+                                                    <imageView width="20" height="18" alignment="left" verticalAlignment="center" contentMode="scaleAspectFit" id="kKj-WS-P2N"/>
+                                                </items>
+                                            </group>
+                                            <label alignment="left" verticalAlignment="center" text="Label" id="ckH-66-fiC">
+                                                <fontDescription key="font" type="boldSystem" pointSize="16"/>
+                                            </label>
+                                        </items>
+                                    </group>
+                                    <connections>
+                                        <outlet property="image" destination="kKj-WS-P2N" id="Yvn-Rp-KPW"/>
+                                        <outlet property="label" destination="ckH-66-fiC" id="6GQ-FN-eCN"/>
+                                        <outlet property="rowGroup" destination="rTZ-xg-cFz" id="39v-TR-57L"/>
+                                    </connections>
+                                </tableRow>
+                            </items>
+                        </table>
+                    </items>
+                    <connections>
+                        <outlet property="tableView" destination="9xj-uO-TsW" id="QQA-D9-keJ"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="-28" y="328"/>
         </scene>
     </scenes>
 </document>
