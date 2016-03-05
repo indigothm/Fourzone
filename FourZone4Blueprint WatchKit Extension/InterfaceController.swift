@@ -23,7 +23,7 @@ class InterfaceController: WKInterfaceController {
     
     //Workout Related Variables
     
-    var workoutSession : HKWorkoutSession?
+//   
     var workoutType: String = "Walk and Chill"
 
     
@@ -90,14 +90,6 @@ class InterfaceController: WKInterfaceController {
     }
     
     
-    func workoutSession(workoutSession: HKWorkoutSession, didFailWithError error: NSError) {
-        // Do nothing for now
-        NSLog("Workout error: \(error.userInfo)")
-    }
-    
-
-
-    
     func hrActivator() {
         if (WorkoutManager.sharedInstance.workoutActive) {
             
@@ -107,7 +99,7 @@ class InterfaceController: WKInterfaceController {
             print("Finishing Workout")
             WorkoutManager.sharedInstance.workoutActive = false
             
-            if let workout = self.workoutSession {
+            if let workout = WorkoutManager.sharedInstance.workoutSession {
                 GetHeartRate.sharedInstance.healthStore.endWorkoutSession(workout)
             }
             

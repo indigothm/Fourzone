@@ -11,12 +11,10 @@ import HealthKit
 
 class ExtensionDelegate: NSObject, WKExtensionDelegate {
     
-    var workoutSession : HKWorkoutSession?
-
     func applicationDidFinishLaunching() {
         // Perform any final initialization of your application.
         
-        if let _ = self.workoutSession {
+        if let _ = WorkoutManager.sharedInstance.workoutSession {
             WorkoutManager.sharedInstance.workoutActive = true
             WorkoutManager.sharedInstance.entryWorkout = true
         }
@@ -35,7 +33,7 @@ class ExtensionDelegate: NSObject, WKExtensionDelegate {
        
         
         //TODO: This one is broken - probably pass a wrong workout session
-        if let workout = self.workoutSession {
+        if let workout = WorkoutManager.sharedInstance.workoutSession {
             print(workout)
             print("Killing workout")
             GetHeartRate.sharedInstance.healthStore.endWorkoutSession(workout)
