@@ -21,6 +21,7 @@
 		3F24A3E71C837E1E00CB70CF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3F24A3E61C837E1E00CB70CF /* Assets.xcassets */; };
 		3F24A3F71C83840D00CB70CF /* MenuInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F24A3F61C83840C00CB70CF /* MenuInterfaceController.swift */; };
 		3F24A3F91C8384A700CB70CF /* TableRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F24A3F81C8384A700CB70CF /* TableRow.swift */; };
+		3F4C73561C8A5FB300881DC6 /* GetHeartRate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F4C73551C8A5FB300881DC6 /* GetHeartRate.swift */; };
 		3FA6AFC91C839E3800BBA78E /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FA6AFC81C839E3800BBA78E /* HealthKit.framework */; };
 		3FA6AFCB1C839EBE00BBA78E /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FA6AFCA1C839EBE00BBA78E /* HealthKit.framework */; };
 		3FB595A91C8884B500D4EA41 /* GlanceInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FB595A81C8884B400D4EA41 /* GlanceInterfaceController.swift */; };
@@ -87,6 +88,7 @@
 		3F24A3E81C837E1E00CB70CF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3F24A3F61C83840C00CB70CF /* MenuInterfaceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuInterfaceController.swift; sourceTree = "<group>"; };
 		3F24A3F81C8384A700CB70CF /* TableRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableRow.swift; sourceTree = "<group>"; };
+		3F4C73551C8A5FB300881DC6 /* GetHeartRate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetHeartRate.swift; sourceTree = "<group>"; };
 		3FA6AFC71C839E3800BBA78E /* FourZone4Blueprint.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = FourZone4Blueprint.entitlements; sourceTree = "<group>"; };
 		3FA6AFC81C839E3800BBA78E /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
 		3FA6AFCA1C839EBE00BBA78E /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = Platforms/WatchOS.platform/Developer/SDKs/WatchOS2.1.sdk/System/Library/Frameworks/HealthKit.framework; sourceTree = DEVELOPER_DIR; };
@@ -165,6 +167,7 @@
 			children = (
 				3F24A3F61C83840C00CB70CF /* MenuInterfaceController.swift */,
 				3FB595A81C8884B400D4EA41 /* GlanceInterfaceController.swift */,
+				3F4C73551C8A5FB300881DC6 /* GetHeartRate.swift */,
 				3F24A3E21C837E1E00CB70CF /* InterfaceController.swift */,
 				3F24A3F81C8384A700CB70CF /* TableRow.swift */,
 				3FA6AFCC1C839EBE00BBA78E /* FourZone4Blueprint WatchKit Extension.entitlements */,
@@ -329,6 +332,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3F24A3E51C837E1E00CB70CF /* ExtensionDelegate.swift in Sources */,
+				3F4C73561C8A5FB300881DC6 /* GetHeartRate.swift in Sources */,
 				3F24A3F91C8384A700CB70CF /* TableRow.swift in Sources */,
 				3FB595A91C8884B500D4EA41 /* GlanceInterfaceController.swift in Sources */,
 				3F24A3F71C83840D00CB70CF /* MenuInterfaceController.swift in Sources */,

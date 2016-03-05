@@ -8,6 +8,7 @@
 
 import WatchKit
 import Foundation
+import HealthKit
 
 struct RowData{
     let name:String
@@ -26,17 +27,50 @@ class MenuInterfaceController: WKInterfaceController {
         RowData(name: "Hardcore", imageName: "Skull")
     ]
     
+    static let heartRateQuantityType = HKQuantityType.quantityTypeForIdentifier(HKQuantityTypeIdentifierHeartRate)
+    
+    let dataTypesToRead = NSSet(objects: heartRateQuantityType!)
+    
     override func awakeWithContext(context: AnyObject?) {
         super.awakeWithContext(context)
         
         // Configure interface objects here.
         
         setTitle("Fourzone")
+        
+        GetHeartRate.sharedInstance.healthStore.requestAuthorizationToShareTypes(nil,
+            readTypes: dataTypesToRead as? Set<HKObjectType>,
+            completion: { (success, error) -> Void in
+                if success {
+                    print("success")
+                } else {
+                    print(error!.description)
+                }
+        })
+        
+        
     }
     
     override func willActivate() {
         // This method is called when watch view controller is about to be visible to user
         super.willActivate()
+        
+        guard HKHealthStore.isHealthDataAvailable() == true else {
+            print("Not avaliable")
+            return
+        }
+        
+        guard let quantityType = HKQuantityType.quantityTypeForIdentifier(HKQuantityTypeIdentifierHeartRate) else {
+            print("Not Allowed")
+            return
+        }
+        
+        let dataTypes = Set(arrayLiteral: quantityType)
+        GetHeartRate.sharedInstance.healthStore.requestAuthorizationToShareTypes(nil, readTypes: dataTypes) { (success, error) -> Void in
+            if success == false {
+                print("Not Allowed")
+            }
+        }
         
         let rows = Array(count: objects.count, repeatedValue: "Row")
         tableView.setRowTypes(rows)
@@ -71,7 +105,6 @@ class MenuInterfaceController: WKInterfaceController {
     }
     
     override func didDeactivate() {
-        // This method is called when watch view controller is no longer visible
         super.didDeactivate()
     }
 

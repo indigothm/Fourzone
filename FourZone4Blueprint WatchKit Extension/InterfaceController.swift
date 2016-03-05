@@ -14,19 +14,18 @@ import WatchKit
 
 class InterfaceController: WKInterfaceController, HKWorkoutSessionDelegate {
     
+    //Interface Outlets
+    
     @IBOutlet var statusView: WKInterfaceLabel!
     @IBOutlet var ringView: WKInterfaceImage!
     @IBOutlet var percentageView: WKInterfaceLabel!
     @IBOutlet var bpmVIew: WKInterfaceLabel!
     
-    let healthStore = HKHealthStore()
-    var i = 0
+    //Workout Related Variables
+    
     var workoutActive = false
     var workoutSession : HKWorkoutSession?
-    let heartRateUnit = HKUnit(fromString: "count/min")
-    var anchor = HKQueryAnchor(fromValue: Int(HKAnchoredObjectQueryNoAnchor))
-
-  // var hardData = [60.0,70.0,63.0,76.0,68.0,62.0,78.0,84.0,75.0,61.0,65.0,78.0]
+    var workoutType: String = "Walk and Chill"
 
     
     override func awakeWithContext(context: AnyObject?) {
@@ -41,52 +40,57 @@ class InterfaceController: WKInterfaceController, HKWorkoutSessionDelegate {
         switch context as! String {
             
         case "Hardcore":
-        //    self.hardData = [135.0,143.0,153.0,158.0,150.0,152.0,149.0,152.0,156.0,158.0,146.0,142.0]
-            ringView.startAnimatingWithImagesInRange(NSMakeRange(0, 37), duration: 2, repeatCount: 1)
-            percentageView.setText("96%")
-            statusView.setText("DANGEROUS HR")
+            workoutType = "Hardcore"
+            ringView.startAnimatingWithImagesInRange(NSMakeRange(0, 37), duration: 0.5, repeatCount: 1)
+            
+            percentageView.setText("")
+            statusView.setText("Checking your HR")
+            bpmVIew.setText("")
             
             
         case "Fat Burning":
-            
-            ringView.startAnimatingWithImagesInRange(NSMakeRange(0, 27), duration: 1, repeatCount: 1)
-            percentageView.setText("70%")
-            statusView.setText("Fat burning")
+            workoutType = "Fat Burning"
+            ringView.startAnimatingWithImagesInRange(NSMakeRange(0, 37), duration: 0.5, repeatCount: 1)
+            percentageView.setText("")
+            statusView.setText("Checking your HR")
+            bpmVIew.setText("")
+
 
             
         case "Endurance":
-          //  self.hardData = [90.0,98.0,103.0,98.0,95.0,97.0,101.0,106.0,109.0,96.0,98.0,101.0]
-            ringView.startAnimatingWithImagesInRange(NSMakeRange(0, 23), duration: 1, repeatCount: 1)
-            percentageView.setText("65%")
-            statusView.setText("Longer...")
+            workoutType = "Endurance"
+            ringView.startAnimatingWithImagesInRange(NSMakeRange(0, 37), duration: 0.5, repeatCount: 1)
+            percentageView.setText("")
+            statusView.setText("Checking your HR")
+            bpmVIew.setText("")
+
 
             
         case "Walk and Chill":
-            
-            ringView.startAnimatingWithImagesInRange(NSMakeRange(0, 14), duration: 1, repeatCount: 1)
-            percentageView.setText("45%")
-            statusView.setText("Relax...")
+            workoutType  = "Walk and Chill"
+            ringView.startAnimatingWithImagesInRange(NSMakeRange(0, 37), duration: 0.5, repeatCount: 1)
+            percentageView.setText("")
+            statusView.setText("Low Intencity Zone")
+            bpmVIew.setText("")
 
-            
+
         default:
-            
             print("Non")
 
             
         }
         
-        startBtnTapped()
-        var timer = NSTimer.scheduledTimerWithTimeInterval(3, target: self, selector: "update", userInfo: nil, repeats: true)
+        hrActivator()
+        _ = NSTimer.scheduledTimerWithTimeInterval(3, target: self, selector: "update", userInfo: nil, repeats: true)
         
     }
     
     
 
         func update() {
-        bpmVIew.setText(String(HRRealVal) + " bpm")
-        setUpCircles(Double(HRRealVal))
+        bpmVIew.setText(String(GetHeartRate.sharedInstance.HRRealVal) + " bpm")
+            setUpCircles(Double(GetHeartRate.sharedInstance.HRRealVal), age: 18)
         
-        i++
     }
 
     override func willActivate() {
@@ -98,7 +102,7 @@ class InterfaceController: WKInterfaceController, HKWorkoutSessionDelegate {
         // This method is called when watch view controller is no longer visible
         super.didDeactivate()
         
-        startBtnTapped()
+        hrActivator()
     }
     
     func workoutSession(workoutSession: HKWorkoutSession, didChangeToState toState: HKWorkoutSessionState, fromState: HKWorkoutSessionState, date: NSDate) {
@@ -119,9 +123,9 @@ class InterfaceController: WKInterfaceController, HKWorkoutSessionDelegate {
     
     func workoutDidStart(date : NSDate) {
         print("Workout did start")
-        if let query = createHeartRateStreamingQuery(date) {
+        if let query = GetHeartRate.sharedInstance.createHeartRateStreamingQuery(date) {
             print("Using query")
-            healthStore.executeQuery(query)
+            GetHeartRate.sharedInstance.healthStore.executeQuery(query)
             
         } else {
             print("cannot start")
@@ -129,31 +133,29 @@ class InterfaceController: WKInterfaceController, HKWorkoutSessionDelegate {
     }
     
     func workoutDidEnd(date : NSDate) {
-        if let query = createHeartRateStreamingQuery(date) {
-            healthStore.stopQuery(query)
+        if let query = GetHeartRate.sharedInstance.createHeartRateStreamingQuery(date) {
+            GetHeartRate.sharedInstance.healthStore.stopQuery(query)
         } else {
-            //label.setText("cannot stop")
         }
     }
     
-    // MARK: - Actions
-    func startBtnTapped() {
+    func hrActivator() {
         if (self.workoutActive) {
+            
             //finish the current workout
-            self.workoutActive = false
-     //       self.startStopButton.setTitle("Start")
             print("Finishing Workout")
-
+            self.workoutActive = false
+            
             if let workout = self.workoutSession {
-                healthStore.endWorkoutSession(workout)
+                GetHeartRate.sharedInstance.healthStore.endWorkoutSession(workout)
             }
         } else {
+            
             //start a new workout
+            print("Starting Workout")
             self.workoutActive = true
-       //     self.startStopButton.setTitle("Stop")
             startWorkout()
             
-            print("Starting Workout")
         }
         
     }
@@ -161,71 +163,41 @@ class InterfaceController: WKInterfaceController, HKWorkoutSessionDelegate {
     func startWorkout() {
         self.workoutSession = HKWorkoutSession(activityType: HKWorkoutActivityType.CrossTraining, locationType: HKWorkoutSessionLocationType.Indoor)
         self.workoutSession?.delegate = self
-        healthStore.startWorkoutSession(self.workoutSession!)
+        GetHeartRate.sharedInstance.healthStore.startWorkoutSession(self.workoutSession!)
     }
     
-    func createHeartRateStreamingQuery(workoutStartDate: NSDate) -> HKQuery? {
-        // adding predicate will not work
-        
-        let predicate = HKQuery.predicateForSamplesWithStartDate(workoutStartDate, endDate: nil, options: HKQueryOptions.None)
-        print("Entered queury")
-        guard let quantityType = HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierHeartRate) else { return nil }
-    
-        let heartRateQuery = HKAnchoredObjectQuery(type: quantityType, predicate: nil, anchor: anchor, limit: Int(HKObjectQueryNoLimit)) { (query, sampleObjects, deletedObjects, newAnchor, error) -> Void in
-           // guard let newAnchor = newAnchor else {return}
-           // self.anchor = newAnchor
-            self.updateHeartRate(sampleObjects)
-            print("Query is configured")
-        }
-        
-        heartRateQuery.updateHandler = {(query, samples, deleteObjects, newAnchor, error) -> Void in
-           // self.anchor = newAnchor!
-            self.updateHeartRate(samples)
-            print("Updating sample")
-            print(samples)
-        }
-        return heartRateQuery
+    func checkZone(percent: Int) {
+            if (percent < 60) {
+                statusView.setText("Low Intencity Zone")
+            } else if (60 < percent && percent < 70){
+                statusView.setText("Fat Burning Zone")
+            } else if (70 < percent && percent < 80) {
+                statusView.setText("Endurance Improvement")
+            } else if (80 < percent && percent < 90) {
+                statusView.setText("Maximum Perfomance")
+            } else if (percent > 90) {
+                statusView.setText("Danger")
+            }
     }
-
+   
     
-    func updateHeartRate(samples: [HKSample]?) {
-        print("Entered updateHR")
-        guard let heartRateSamples = samples as? [HKQuantitySample] else {
-            
-            print("No HR detected")
-            
-            return
-        }
+    func setUpCircles(bpm: Double, age: Int){
         
-        dispatch_async(dispatch_get_main_queue()) {
-            print("Enter async")
-            guard let sample = heartRateSamples.first else{return}
-            let value = sample.quantity.doubleValueForUnit(self.heartRateUnit)
-            print(String(UInt16(value)))
-            //HERE IS THE VALUE
-            self.HRRealVal = Int(value)
-            
-            // retrieve source from sample
-            print(sample.sourceRevision.source.name)
-
-        }
-    }
-    
-    var HRRealVal: Int = 0
-    
-    var workoutType: String = "Walk and Chill"
-    func setUpCircles(bpm: Double){
-        let AGE = 18
-        let percent = bpm / (Double)(220 - AGE) * 100
+        let percent = bpm / (Double)(220 - age) * 100
+        checkZone(Int(percent))
+        self.percentageView.setText(String(Int(percent)) + "%")
+        
+        
         if(percent <= 90){
-            setupBlueView(percent / 80 * 100)
+            setupNormalView(percent / 80 * 100)
         }
         else{
             setupOverloadView()
         }
         checkForWarning(percent, workoutType: self.workoutType)
     }
-    func setupBlueView(percent: Double){
+    
+    func setupNormalView(percent: Double){
         let segFilled: Double = percent / 100 * 36
         ringView.startAnimatingWithImagesInRange(NSMakeRange(0, (Int)(segFilled)), duration: 1, repeatCount: 1)
     }
@@ -236,10 +208,12 @@ class InterfaceController: WKInterfaceController, HKWorkoutSessionDelegate {
     
     
     func checkForWarning(percent: Double, workoutType: String){
+       
         //Light <60
         //Fat 60 to 70
         //70 to 90 endurance
         //90+ DANGER
+        
         if(percent > 95){
             WKInterfaceDevice.currentDevice().playHaptic(.Failure)
         }
@@ -249,7 +223,7 @@ class InterfaceController: WKInterfaceController, HKWorkoutSessionDelegate {
                 //always good
                 break
                 
-            case "Fat Burn":
+            case "Fat Burning":
                 if(percent < 60){
                     //Hurry Up
                     WKInterfaceDevice.currentDevice().playHaptic(.Success)
@@ -269,7 +243,7 @@ class InterfaceController: WKInterfaceController, HKWorkoutSessionDelegate {
                 }
                 
                 
-            case "Overload":
+            case "Hardcore":
                 if(percent < 90){
                     //Hurry Up
                     WKInterfaceDevice.currentDevice().playHaptic(.Success)
@@ -279,6 +253,8 @@ class InterfaceController: WKInterfaceController, HKWorkoutSessionDelegate {
             
         }
     }
+    
+    
     
     
    }
