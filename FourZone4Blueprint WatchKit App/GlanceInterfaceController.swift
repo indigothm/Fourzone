@@ -11,16 +11,15 @@ import HealthKit
 import WatchKit
 
 
-class GlanceInterfaceController: WKInterfaceController, HKWorkoutSessionDelegate {
+class GlanceInterfaceController: WKInterfaceController {
     
     
     
     @IBOutlet var percentageView: WKInterfaceLabel!
     @IBOutlet var bpmVIew: WKInterfaceLabel!
+    @IBOutlet var statusView: WKInterfaceLabel!
     
-    var workoutActive = false
-    var workoutSession : HKWorkoutSession?
-         var i = 0
+    var i = 0
     
     override func awakeWithContext(context: AnyObject?) {
         super.awakeWithContext(context)
@@ -28,7 +27,7 @@ class GlanceInterfaceController: WKInterfaceController, HKWorkoutSessionDelegate
         print(context)
         
         // Configure interface objects here
-        startBtnTapped()
+        hrActivator()
         _ = NSTimer.scheduledTimerWithTimeInterval(3, target: self, selector: "update", userInfo: nil, repeats: true)
         
     }
@@ -36,10 +35,8 @@ class GlanceInterfaceController: WKInterfaceController, HKWorkoutSessionDelegate
     
     func update() {
         bpmVIew.setText(String(GetHeartRate.sharedInstance.HRRealVal) + " bpm")
-        
-        
-        percentageView.setText(GetHeartRate.sharedInstance.determinePercentage(Double(GetHeartRate.sharedInstance.HRRealVal), age: 18))
-        
+        percentageView.setText(GetHeartRate.sharedInstance.determinePercentage(Double(GetHeartRate.sharedInstance.HRRealVal), age: 18) + "%")
+        checkZone(GetHeartRate.sharedInstance.HRRealVal)
         i++
     }
     
@@ -52,72 +49,57 @@ class GlanceInterfaceController: WKInterfaceController, HKWorkoutSessionDelegate
         // This method is called when watch view controller is no longer visible
         super.didDeactivate()
         
-        startBtnTapped()
-    }
-    
-    func workoutSession(workoutSession: HKWorkoutSession, didChangeToState toState: HKWorkoutSessionState, fromState: HKWorkoutSessionState, date: NSDate) {
-        switch toState {
-        case .Running:
-            workoutDidStart(date)
-        case .Ended:
-            workoutDidEnd(date)
-        default:
-            print("Unexpected state \(toState)")
-        }
-    }
-    
-    func workoutSession(workoutSession: HKWorkoutSession, didFailWithError error: NSError) {
-        // Do nothing for now
-        NSLog("Workout error: \(error.userInfo)")
-    }
-    
-    func workoutDidStart(date : NSDate) {
-        print("Workout did start")
-        if let query = GetHeartRate.sharedInstance.createHeartRateStreamingQuery(date) {
-            print("Using query")
-            GetHeartRate.sharedInstance.healthStore.executeQuery(query)
-            
-        } else {
-            print("cannot start")
-        }
-    }
-    
-    func workoutDidEnd(date : NSDate) {
-        if let query = GetHeartRate.sharedInstance.createHeartRateStreamingQuery(date) {
-            GetHeartRate.sharedInstance.healthStore.stopQuery(query)
-        } else {
-            //label.setText("cannot stop")
-        }
-    }
-    
-    // MARK: - Actions
-    func startBtnTapped() {
-        if (self.workoutActive) {
-            //finish the current workout
-            self.workoutActive = false
-            //       self.startStopButton.setTitle("Start")
-            print("Finishing Workout")
-            
-            if let workout = self.workoutSession {
-                GetHeartRate.sharedInstance.healthStore.endWorkoutSession(workout)
-            }
-        } else {
-            //start a new workout
-            self.workoutActive = true
-            //     self.startStopButton.setTitle("Stop")
-            startWorkout()
-            
-            print("Starting Workout")
+        print("Finishing Workout")
+        WorkoutManager.sharedInstance.workoutActive = false
+        
+        if let workout = WorkoutManager.sharedInstance.workoutSession {
+            GetHeartRate.sharedInstance.healthStore.endWorkoutSession(workout)
         }
         
     }
     
-    func startWorkout() {
-        self.workoutSession = HKWorkoutSession(activityType: HKWorkoutActivityType.CrossTraining, locationType: HKWorkoutSessionLocationType.Indoor)
-        self.workoutSession?.delegate = self
-        GetHeartRate.sharedInstance.healthStore.startWorkoutSession(self.workoutSession!)
-    }
+  
     
+    // MARK: - Actions
+    func hrActivator() {
+        if (WorkoutManager.sharedInstance.workoutActive) {
+            
+            if WorkoutManager.sharedInstance.entryWorkout {
+                
+                //finish the current workout
+                print("Finishing Workout")
+                WorkoutManager.sharedInstance.workoutActive = false
+                
+                if let workout = WorkoutManager.sharedInstance.workoutSession {
+                    GetHeartRate.sharedInstance.healthStore.endWorkoutSession(workout)
+                }
+                
+            }
+            
+        } else {
+            
+            //start a new workout
+            print("Starting Workout")
+            WorkoutManager.sharedInstance.workoutActive = true
+            WorkoutManager.sharedInstance.startWorkout()
+            
+        }
+        
+    }
+
+    func checkZone(percent: Int) {
+        if (percent < 60) {
+            statusView.setText("Low Intencity Zone")
+        } else if (60 < percent && percent < 70){
+            statusView.setText("Fat Burning Zone")
+        } else if (70 < percent && percent < 80) {
+            statusView.setText("Endurance Improvement")
+        } else if (80 < percent && percent < 90) {
+            statusView.setText("Maximum Perfomance")
+        } else if (percent > 90) {
+            statusView.setText("Danger")
+        }
+    }
     
     
     

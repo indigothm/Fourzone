@@ -18,7 +18,7 @@ class ExtensionDelegate: NSObject, WKExtensionDelegate {
             WorkoutManager.sharedInstance.workoutActive = true
             WorkoutManager.sharedInstance.entryWorkout = true
         }
-        
+                
     }
 
     func applicationDidBecomeActive() {
@@ -36,6 +36,7 @@ class ExtensionDelegate: NSObject, WKExtensionDelegate {
         if let workout = WorkoutManager.sharedInstance.workoutSession {
             print(workout)
             print("Killing workout")
+            WorkoutManager.sharedInstance.workoutActive = false
             GetHeartRate.sharedInstance.healthStore.endWorkoutSession(workout)
         }
         

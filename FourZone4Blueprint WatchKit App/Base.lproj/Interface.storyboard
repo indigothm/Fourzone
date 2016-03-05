@@ -37,24 +37,29 @@
             </objects>
             <point key="canvasLocation" x="137" y="328"/>
         </scene>
-        <!--Glance Interface Controller-->
+        <!--hrMeasureGlance-->
         <scene sceneID="Zx0-d2-bIW">
             <objects>
-                <glanceController topTemplateType="body1Medium" bottomTemplateType="extraLargeBody1Group" id="l9R-W5-fz9" customClass="GlanceInterfaceController" customModule="FourZone4Blueprint_WatchKit_Extension">
+                <glanceController identifier="hrMeasureGlance" topTemplateType="body1Medium" bottomTemplateType="largeBody2Group" id="l9R-W5-fz9" customClass="GlanceInterfaceController" customModule="FourZone4Blueprint_WatchKit_Extension">
                     <items>
-                        <label alignment="left" text="Foruzone" id="K66-UE-f4P"/>
-                        <label alignment="left" text="HR" id="Rjk-MI-H7h"/>
-                        <label alignment="left" text="40%" id="0Gn-iK-I6I"/>
-                        <label alignment="left" text="50 bpm" id="Yv7-es-1Vu"/>
-                        <group alignment="left" id="uxB-HP-Lli">
+                        <label alignment="left" text="Foruzone" id="K66-UE-f4P">
+                            <color key="textColor" red="0.40000000600000002" green="0.80000001190000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        </label>
+                        <label alignment="left" text="HR" id="Rjk-MI-H7h">
+                            <color key="textColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        </label>
+                        <label alignment="left" text="..." id="0Gn-iK-I6I"/>
+                        <label alignment="left" text="Checking" id="Yv7-es-1Vu"/>
+                        <group alignment="left" id="Iog-Pq-X9H">
                             <items>
-                                <imageView width="1" height="1" alignment="left" hidden="YES" id="ANL-uF-2fI"/>
+                                <imageView width="1" height="1" alignment="left" id="dSh-aY-G5Z"/>
                             </items>
                         </group>
                     </items>
                     <connections>
-                        <outlet property="bpmVIew" destination="Yv7-es-1Vu" id="JIa-82-0j2"/>
+                        <outlet property="bpmVIew" destination="Rjk-MI-H7h" id="MeC-PY-Wdu"/>
                         <outlet property="percentageView" destination="0Gn-iK-I6I" id="nJg-Rm-MmH"/>
+                        <outlet property="statusView" destination="Yv7-es-1Vu" id="XFD-bB-83b"/>
                     </connections>
                 </glanceController>
             </objects>

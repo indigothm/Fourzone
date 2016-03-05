@@ -23,7 +23,6 @@ class InterfaceController: WKInterfaceController {
     
     //Workout Related Variables
     
-//   
     var workoutType: String = "Walk and Chill"
 
     

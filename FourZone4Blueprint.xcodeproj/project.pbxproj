@@ -169,9 +169,9 @@
 			children = (
 				3F24A3F61C83840C00CB70CF /* MenuInterfaceController.swift */,
 				3FB595A81C8884B400D4EA41 /* GlanceInterfaceController.swift */,
+				3F24A3E21C837E1E00CB70CF /* InterfaceController.swift */,
 				3F4C73551C8A5FB300881DC6 /* GetHeartRate.swift */,
 				3F4C73571C8AAC0400881DC6 /* WorkoutManager.swift */,
-				3F24A3E21C837E1E00CB70CF /* InterfaceController.swift */,
 				3F24A3F81C8384A700CB70CF /* TableRow.swift */,
 				3FA6AFCC1C839EBE00BBA78E /* FourZone4Blueprint WatchKit Extension.entitlements */,
 				3F24A3E41C837E1E00CB70CF /* ExtensionDelegate.swift */,

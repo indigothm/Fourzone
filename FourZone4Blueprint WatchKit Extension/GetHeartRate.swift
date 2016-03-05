@@ -28,7 +28,7 @@ class GetHeartRate {
             self.updateHeartRate(sampleObjects)
             print("Query is configured")
         }
-        
+                
         heartRateQuery.updateHandler = {(query, samples, deleteObjects, newAnchor, error) -> Void in
             self.updateHeartRate(samples)
             print("Updating sample")
@@ -67,7 +67,7 @@ class GetHeartRate {
     
     func determinePercentage(bpm: Double, age: Int) -> String {
         let percent = bpm / (Double)(220 - age) * 100
-        return String(percent)
+        return String(Int(percent))
     }
     
     
