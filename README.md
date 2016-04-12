@@ -6,7 +6,7 @@ It is becoming ever more common to see people with smart watches, fitness tracke
 ### What is FourZone?
 Now that you know what inspires us, solving real world problems, we can explain what FourZone does.  In short, FourZone is a heart rate coach that can educate, motivate, and assist users in best conducting his or her workout by using target heart rate zones.  The app name of FourZone steams from the fact that there are four target heart rate zones and the design of the logo was inspired by Haberdasher Puzzles...If you do not know what a Haberdasher Puzzle is...Check out this gif by Brent Clouse:
 
-![Alt text](/triangle2.gif?raw=true "Optional Title")
+![Alt text](/triangle2.gif?raw=true "Credit: Brent Clouse")
 
 - Spring: dynamic animation that creates a nice bouncing effect.
 - Decay: dynamic animation that brings a movement to a smooth halt.
