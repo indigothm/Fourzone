@@ -28,11 +28,12 @@ Navigate to this "Swift Version" folder or ([click here](https://github.com/hoss
 <h3 align="center">Made To Be Put Straight Onto Your Device</h3>
 ---
 At this point we know you must be thking how useful and cool this technology is!  Likely you want to give it a try, lucky for you FourZone is going to be available for free in the iOS app store in the near future.  However, for those of you that can not wait you can follow these easy steps and get FourZone running on your device quickly.  
-1) Install Xcode
-2) Download the project zip
-3) Run the project on your iPhone
-4) IMPORTANT: FourZone will not work unless you give it permission to your heart rate data!  In order to give permissions just open the app and allow FourZone to access the heart rate data from the prompt :)
-5) Enjoy!  We are always looking to improve our projects so if you have any questions or ideas for future features please drop us a line!
+
+- Install Xcode
+- Download the project zip
+- Run the project on your iPhone
+- IMPORTANT: FourZone will not work unless you give it permission to your heart rate data!  In order to give permissions just open the app and allow FourZone to access the heart rate data from the prompt :)
+- Enjoy!  We are always looking to improve our projects so if you have any questions or ideas for future features please drop us a line!
 
 <h3 align="center">FourZone Examples</h3>
 ---
