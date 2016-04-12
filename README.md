@@ -1,11 +1,12 @@
 <h3 align="center">FourZone, By Alex, Auora, Christian, and Elliot</h3>
 ---
 
-This project is a tutorial ([Check tutorial here](http://www.appcoda.com/facebook-pop-framework-intro/ "Facebook Pop Tutorial")) for how to use Pop framework by Facebook. Its very easy and effecient framework that helps you to make decent animation in no time. 
-In this project you will find some simple demoes, they are not big demoes but I promise you, they will help you in mastering the framework.
+It is becoming ever more common to see people with smart watches, fitness trackers, and other personal technologies.  Specifically, our team was inspired by fitness tracking and improving our individual performance during workouts.  We all wear fitness trackers daily (Apple Watch, Fitbit Surge, and Fitbit HR) and we discussed what our pain points were.  One clear feature that is constantly boasted about is heart beat tracking, yet we had no idea what these beats per minute meant in relation to most efficiently working out.  We conducted some further research and learned that there truly is a science behind improved fitness and target heart rate zones.  The science explained how there are four target heart rate zones that allow someone to maximize fat burn, endurance, performance, or muscle build.  Further we noticed that no application was available that motivated users based on his or her individual target heart rate zones and what they were trying to do. Our team has since created an apple watch application that tracks heart rate and based on the type of workout you are completing motives you to push harder (to reach your target and ideal heart zone for the exercise) or to slow down if your heart rate is at a dangerous level.  FourZone motivates and keeps users heart healthy and safe :)
 
 ### What is FourZone?
 Pop is an extensible animation engine for both iOS and OS X. In addition to basic animations including Linear, Ease-In, Ease-Out, Ease-In-Ease-Out animations, it supports spring (at the time of its release, spring animation was not supported in iOS), decay and custom animations:
+
+![Alt text](/triangle2.png?raw=true "Optional Title")
 
 - Spring: dynamic animation that creates a nice bouncing effect.
 - Decay: dynamic animation that brings a movement to a smooth halt.
