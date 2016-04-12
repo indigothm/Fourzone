@@ -6,7 +6,7 @@ It is becoming ever more common to see people with smart watches, fitness tracke
 ### What is FourZone?
 Pop is an extensible animation engine for both iOS and OS X. In addition to basic animations including Linear, Ease-In, Ease-Out, Ease-In-Ease-Out animations, it supports spring (at the time of its release, spring animation was not supported in iOS), decay and custom animations:
 
-![Alt text](/triangle2.png?raw=true "Optional Title")
+![Alt text](/triangle2.gif?raw=true "Optional Title")
 
 - Spring: dynamic animation that creates a nice bouncing effect.
 - Decay: dynamic animation that brings a movement to a smooth halt.
