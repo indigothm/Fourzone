@@ -1,6 +1,6 @@
 <h3 align="center">FourZone, By Alex, Auora, Christian, and Elliot</h3>
 ---
-
+![Alt text](/triangle2.gif?raw=true "Such App, Such Wow, Both Apple Watch and iPhone<3")
 It is becoming ever more common to see people with smart watches, fitness trackers, and other personal technologies.  Specifically, our team was inspired by fitness tracking and improving our individual performance during workouts.  We all wear fitness trackers daily (Apple Watch, Fitbit Surge, and Fitbit HR) and we discussed what our pain points were.  One clear feature that is constantly boasted about is heart beat tracking, yet we had no idea what these beats per minute meant in relation to most efficiently working out.  We conducted some further research and learned that there truly is a science behind improved fitness and target heart rate zones.  The science explained how there are four target heart rate zones that allow someone to maximize fat burn, endurance, performance, or muscle build.  Further we noticed that no application was available that motivated users based on his or her individual target heart rate zones and what they were trying to do. Our team has since created an apple watch application that tracks heart rate and based on the type of workout you are completing motives you to push harder (to reach your target and ideal heart zone for the exercise) or to slow down if your heart rate is at a dangerous level.  FourZone motivates and keeps users heart healthy and safe :)
 
 ### What is FourZone?
@@ -8,23 +8,9 @@ Now that you know what inspires us, solving real world problems, we can explain 
 
 ![Alt text](/triangle2.gif?raw=true "Credit: Brent Clouse")
 
-- Spring: dynamic animation that creates a nice bouncing effect.
-- Decay: dynamic animation that brings a movement to a smooth halt.
-- Custom: because the engine is designed to be extensible, you can create your own custom animations.
-
-The Pop API is very developer friendly that lets you easily build some realistic, physics-based interactions. For instance, here is the code snippet for creating a spring animation on a text label:
-
-```Objective-c
-POPSpringAnimation *sprintAnimation = [POPSpringAnimation animationWithPropertyNamed:kPOPViewScaleXY];
-sprintAnimation.toValue = [NSValue valueWithCGPoint:CGPointMake(0.9, 0.9)];
-sprintAnimation.velocity = [NSValue valueWithCGPoint:CGPointMake(2, 2)];
-sprintAnimation.springBounciness = 20.f;
-[self.textLabel pop_addAnimation:sprintAnimation forKey:@"springAnimation"];
-```
-
 <h3 align="center">Made Entirly in Swift</h3>
 ---
-Navigate to this "Swift Version" folder or ([click here](https://github.com/hossamghareeb/Facebook-POP-Tutorial/tree/master/Swift%20Version "Swift Version")) to see the full working exmples written in Swift.
+This entire project is made using Swift :)  You can find more information about how functions and what not work right in the code!
 
 <h3 align="center">Made To Be Put Straight Onto Your Device</h3>
 ---
